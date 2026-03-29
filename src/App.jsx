@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Home from './components/Home';
 import PublicRoute from './routes/PublicRoute';
 import ProtectedRoute from './routes/ProtectedRoute';
+import UsersDetails from './components/UsersDetails';
+import Navbar from './components/Navbar';
 
 
 const App = () => {
@@ -12,6 +14,7 @@ const App = () => {
     <div>
      
      <BrowserRouter>
+      <Navbar/>
           <Routes>
              <Route path='/'  element={
               <PublicRoute>
@@ -28,6 +31,13 @@ const App = () => {
                   <Home/>
                 </ProtectedRoute>
               } />
+             <Route path='/users'  element={
+                <ProtectedRoute>
+                  <UsersDetails/>
+                </ProtectedRoute>
+              } />
+
+
           </Routes>
      
      </BrowserRouter>
@@ -37,3 +47,6 @@ const App = () => {
 }
 
 export default App;
+
+
+

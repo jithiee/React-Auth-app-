@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 function Home() {
   const navigate = useNavigate();
 
@@ -22,8 +23,15 @@ function Home() {
 
   return (
     <div>
-      <h2>Welcome {user?.username}</h2>
-      <button onClick={handleLogout}>Logout</button>
+    
+       
+      <h2 style={{textAlign:'center'}}>Welcome {user?.username}</h2>
+      <button onClick={handleLogout}>Logout</button> <hr /> 
+
+      <div>
+          <h2>Create User</h2>
+      </div>
+      
     </div>
   );
 }
