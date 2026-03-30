@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 
 function Home() {
-  const [formInput , setFormInput]= useState({
-    name :"",
-    email :"" , 
-    phone:"" ,
-
+  const [formInput, setFormInput] = useState({
+    name: "",
+    email: "",
+    phone: "",
   })
 
 
@@ -19,7 +18,7 @@ function Home() {
   useEffect(() => {
 
     const isLoggedIn = localStorage.getItem("isLoggedIn");
- 
+
     if (isLoggedIn !== "true") {
       navigate("/login");
     }
@@ -30,60 +29,72 @@ function Home() {
     navigate("/login");
   };
 
-  const handleChange = (e)=>{
-    const {name ,value} = e.target ;
-    setFormInput({...formInput , [name] : value})
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput({ ...formInput, [name]: value })
+  }
+  
+  // console.log(formInput);
+  const handleSubmit =(e)=>{
+       e.preventDefault()
   }
 
   return (
     <div>
-    
-       
-      <h2 style={{textAlign:'center'}}>Welcome {user?.username}</h2>
-      <button onClick={handleLogout}>Logout</button> <hr /> 
+
+      <h2 style={{ textAlign: 'center' }}>Welcome {user?.username}</h2>
+      <button onClick={handleLogout}>Logout</button> <hr />
 
       <div>
-          <h2>Create User</h2>
+        <h2>Create User</h2>
 
-          <form   >
-            {/* Name */}
-              <label htmlFor="">Name :</label>
-              <input 
-                type="text"
-                placeholder="Enter username"
-                name="name"
-                value={formInput.name}
-                onChange={handleChange}
+        <form onSubmit={handleSubmit}>
+          {/* Name */}
+          <div>
+            <label htmlFor="">Name :</label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="name"
+              value={formInput.name}
+              onChange={handleChange}
+            />
+          </div> <br />
 
-                />
+          <div>
             {/* Email */}
-              <label htmlFor="">Email :</label>
-              <input 
-                type="email"
-                placeholder="Enter email"
-                name="email"
-                value={formInput.email}
-                onChange={handleChange}
+            <label htmlFor="">Email :</label>
+            <input
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              value={formInput.email}
+              onChange={handleChange}
 
-                />
-            {/* Phone */}
-              <label htmlFor="">Phone :</label>
-              <input 
-                type="text"
-                placeholder="Enter phone number"
-                name="phone"
-                value={formInput.phone}
-                onChange={handleChange}
+            />
+          </div>  <br />
+   
+     <div>
+       {/* Phone */}
+          <label htmlFor="">Phone :</label>
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            name="phone"
+            value={formInput.phone}
+            onChange={handleChange}
+          />
 
-                />
+     </div>  <br />
+         
 
-                <button type="submit"> Add</button>
+          <button type="submit"> Add</button>
 
 
 
-          </form>
+        </form>
       </div>
-      
+
     </div>
   );
 }
