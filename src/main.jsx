@@ -8,6 +8,7 @@ import store  from './app/store.js'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+      {/* Provider gives Redux store to entire app */}
     <Provider store={store}>
           <App />
     </Provider>
