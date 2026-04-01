@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUsers } from "../slices/userSlice";
 
 
 function Home() {
@@ -9,6 +11,7 @@ function Home() {
     phone: "",
   })
 
+  const dispatch = useDispatch()
 
 
 
@@ -38,6 +41,8 @@ function Home() {
   // console.log(formInput);
   const handleSubmit =(e)=>{
        e.preventDefault()
+
+       dispatch(setUsers(formInput))
   }
 
   return (
